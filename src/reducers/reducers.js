@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux'
-import { ADD_TODO, TOGGLE_TODO, SET_VISIBILITY_FILTER, VisibilityFilters } from '../actions/actions.js'
+import { ADD_TODO, TOGGLE_TODO, SET_VISIBILITY_FILTER, VisibilityFilters, APOLOGIZE } from '../actions/actions.js'
 const { SHOW_ALL } = VisibilityFilters
 
 export function visibilityFilter(state = SHOW_ALL, action) {
@@ -33,6 +33,13 @@ export function todos(state = [], action) {
         }
         return todo
       })
+
+    case APOLOGIZE:
+      return {
+        ...state,
+        error: action.error
+      }
+      
     default:
       return state
   }
